@@ -19,14 +19,8 @@ void print_dynamic_array(int *array,int Actually , int Logistik)
     cout << endl;
 
 }
-void append_to_dynamic_array(int *&array , int &Actually , int &Logistik)
+void append_to_dynamic_array(int *&array , int &Actually , int &Logistik,int &EndNumber)
 {
-    int EndNumber = 0;
-   do
-   {
-    
-    cout <<"Введите элемент для добавления: ";
-    cin >> EndNumber; 
     if(EndNumber != 0 )
     {
         if (Logistik <Actually)
@@ -54,9 +48,7 @@ void append_to_dynamic_array(int *&array , int &Actually , int &Logistik)
     }
     
    
-   }while(EndNumber != 0);
-  cout << "Спасибо! Ваш массив: ";
-  print_dynamic_array(array , Actually,Logistik);
+   
   
 }
 
@@ -67,6 +59,7 @@ int main ()
 {
     int FactValueArray;
     int LogistikValueArray;
+    int EndNumber = 0;
     cout << "Введите фактичеcкий размер массива: ";
     cin >> FactValueArray;
     cout << "Введите логический размер массива: ";
@@ -85,8 +78,17 @@ int main ()
     else 
     {
         print_dynamic_array(array,FactValueArray,LogistikValueArray);
-        append_to_dynamic_array(array,FactValueArray,LogistikValueArray);
+         do
+        {
+        cout <<"Введите элемент для добавления: ";
+        cin >> EndNumber;
+        append_to_dynamic_array(array,FactValueArray,LogistikValueArray,EndNumber);
+        }while(EndNumber != 0);
+        cout << "Спасибо! Ваш массив: ";
+        print_dynamic_array(array , FactValueArray,LogistikValueArray);
     }
+    
+    
     delete[] array;
     return 0;
 }
